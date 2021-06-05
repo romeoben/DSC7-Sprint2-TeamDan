@@ -19,7 +19,7 @@ def project():
     st.subheader('by Data Science Fellowship Cohort 7 - Group 1')
     st.write('Bym, Ben, Matt, Miggy, Nilly, Robby (mentored by Danilo)')
 
-    intro_image = Image.open('img/Sprint 2 G1_ SB19 FTW/Slide1.png')
+    intro_image = Image.open('./img/Sprint 2 G1_ SB19 FTW/Slide1.png')
 
     col1, col2 = st.beta_columns(2)
     with col1:
@@ -38,7 +38,7 @@ def sb19():
         )
     col1, col2 = st.beta_columns(2)
     with col1:
-        sb19_pic = Image.open('img/Sprint 2 G1_ SB19 FTW/Slide2.png')
+        sb19_pic = Image.open('./img/Sprint 2 G1_ SB19 FTW/Slide2.png')
         st.image(sb19_pic)
     with col2:
         st.markdown(
@@ -76,8 +76,8 @@ def data_method():
         st.image(methodology)
 
 def methodology():
-    st.title('Methodology')
-    methodology = Image.open("methodology.png")
+    st.title('Methodology and Data Sources')
+    methodology = Image.open("./img/Sprint 2 G1_ SB19 FTW/Slide6.png")
     st.image(methodology)
 
 def chart_perf():
