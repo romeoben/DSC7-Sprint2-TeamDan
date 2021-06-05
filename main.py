@@ -14,24 +14,16 @@ st.set_page_config(page_title='P-Pop to the Top!', layout="wide")
 warnings.filterwarnings('ignore')
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-#prov = pd.read_csv("schools_prov.csv")
-#region = pd.read_csv("schools_region.csv", index_col="school.region")
-#merged_data = gpd.read_file('./merged_data/merged_data.shp')
-#corr = prov[['Schools_Income', 'Schools_Teachers', 'Schools_Rooms', 'Student_Teacher_Ratio', 'Schools_Enrollment']].corr()
-
-
 def project():
     st.title('Catapulting Pinoy Pop to the Top')
     st.subheader('by Data Science Fellowship Cohort 7 - Group 1')
     st.write('Bym, Ben, Matt, Miggy, Nilly, Robby (mentored by Danilo)')
 
-    teacher_image = Image.open('img/teacher.jpg')
+    intro_image = Image.open('img/Sprint 2 G1_ SB19 FTW/Slide1.png')
 
     col1, col2 = st.beta_columns(2)
     with col1:
-        st.image(
-            teacher_image,
-        )
+        st.image(intro_image)
     with col2:
         st.markdown(
             "We harnessed the power of data to decode the **TikTok** sound and inspire **SB19’s** new hit track designed to *top the charts*."
@@ -46,16 +38,13 @@ def sb19():
         )
     col1, col2 = st.beta_columns(2)
     with col1:
-        st.subheader(
-            "PICTURE HERE"
-        )
-        #sb19_pic = Image.open('what_is_mooe.png')
-        #st.image(sb19_pic)
+        sb19_pic = Image.open('img/Sprint 2 G1_ SB19 FTW/Slide2.png')
+        st.image(sb19_pic)
     with col2:
         st.markdown(
             " - Trained for 3 years by ShowBT Philippines",
             " - Active since 2018",
-            " - The first Filipino and Southeast Asian act to be nominated in **Billboard Music Awards** for the *Top Social Artist* category",
+            " - The first Filipino and Southeast Asian act to be nominated in **Billboard Music Awards** for the *Top Social Artist* category"
         )
     
     st.subheader(
