@@ -19,7 +19,7 @@ def project():
     st.subheader('by Data Science Fellowship Cohort 7 - Group 1')
     st.write('Bym, Ben, Matt, Miggy, Nilly, Robby (mentored by Danilo)')
 
-    intro_image = Image.open('img/Sprint_2_G1_SB19 FTW/Slide1.png')
+    intro_image = Image.open('img/Sprint_2_G1_SB19FTW/Slide1.png')
 
     col1, col2 = st.beta_columns(2)
     with col1:
@@ -38,7 +38,7 @@ def sb19():
         )
     col1, col2 = st.beta_columns(2)
     with col1:
-        sb19_pic = Image.open('img/Sprint_2_G1_SB19 FTW/Slide2.png')
+        sb19_pic = Image.open('img/Sprint_2_G1_SB19FTW/Slide2.png')
         st.image(sb19_pic)
     with col2:
         st.markdown(
@@ -75,13 +75,13 @@ def sb19_spotify():
 
     col1, col2 = st.beta_columns(2)
     with col1:
-        sb19_follow = Image.open("img/Sprint_2_G1_SB19 FTW/Slide3.png")
+        sb19_follow = Image.open("img/Sprint_2_G1_SB19FTW/Slide3.png")
         st.image(sb19_follow)
         st.markdown(
             "SB19 has a **massive following** on social media but **relatively low streams** on Spotify."
         )
     with col2:
-        tiktok_follow = Image.open("img/Sprint_2_G1_SB19 FTW/Slide4.png")
+        tiktok_follow = Image.open("img/Sprint_2_G1_SB19FTW/Slide4.png")
         st.image(tiktok_follow)
         st.markdown(
             "These artists have **smaller followings** but **higher streams.**"
@@ -97,7 +97,7 @@ def sb19_spotify():
 
 def methodology():
     st.title('Methodology and Data Sources')
-    methodology = Image.open("img/Sprint_2_G1_SB19 FTW/Slide6.png")
+    methodology = Image.open("img/Sprint_2_G1_SB19FTW/Slide6.png")
     st.image(methodology)
 
 def chart_perf():
