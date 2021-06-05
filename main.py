@@ -42,17 +42,23 @@ def sb19():
         st.image(sb19_pic)
     with col2:
         st.markdown(
-            " - Trained for 3 years by ShowBT Philippines",
-            " - Active since 2018",
+            " - One of the up and coming **Pinoy Pop (P-Pop)** groups"
+        )
+        st.markdown(
+            " - Trained for 3 years by ShowBT Philippines"
+        )
+        st.markdown(
+            " - Active since 2018"
+        )
+        st.markdown(
             " - The first Filipino and Southeast Asian act to be nominated in **Billboard Music Awards** for the *Top Social Artist* category"
         )
-    
     st.subheader(
             "On Social Media:"
         )
     col1, col2, col3 = st.beta_columns(3)
     with col1:
-        st.markdown('**Facebook**')
+        st.subheader('**Facebook**')
         st.write("**1.4M Followers**")
 
     with col2:
@@ -64,16 +70,30 @@ def sb19():
         st.write("**454K Followers**")
 
 
-def data_method():
-    st.title('Data Sources and Methodology')
-    st.write("")
+def sb19_spotify():
+    st.title('SB19 and Spotify: At A Glance')
+
     col1, col2 = st.beta_columns(2)
     with col1:
-        data_sources = Image.open("data_sources.png")
-        st.image(data_sources)
+        sb19_follow = Image.open("img/Sprint_2_G1_SB19 FTW/Slide3.png")
+        st.image(sb19_follow)
+        st.markdown(
+            "SB19 has a **massive following** on social media but **relatively low streams** on Spotify."
+        )
     with col2:
-        methodology = Image.open("methodology.png")
-        st.image(methodology)
+        tiktok_follow = Image.open("img/Sprint_2_G1_SB19 FTW/Slide4.png")
+        st.image(tiktok_follow)
+        st.markdown(
+            "These artists have **smaller followings** but **higher streams.**"
+        )
+        st.write("")
+        with st.beta_expander("What do they have in common?"):
+            
+            tiktok_logo = Image.open("img/tiktok-icon.png")
+            st.image(tiktok_logo)
+            
+            st.markdown("""<a style='display: block; text-align: center;'>**These three are top artists on PH TikTok.**</a>""",unsafe_allow_html=True,)
+    
 
 def methodology():
     st.title('Methodology and Data Sources')
@@ -82,9 +102,25 @@ def methodology():
 
 def chart_perf():
     st.title('Chart Performance')
-    st.subheader("What are these TikTok artists doing right?")
+    st.subheader("How is SB19 doing on the charts?")
+    sb19_charts = Image.open("img/sb19_chartpos.png")
+    st.image(sb19_charts)
     st.write("")
-    st.write("Correlation coefficient: 0.42")
+    st.markdown(
+            "The group debuted in 2018 with the ballad single *Tilaluha* but what catapulted them to the top was **Go Up** -- their 2019 breakout single. From then on their singles releases achieved better positions in the charts but haven't stay long in the charts compared to other artists."
+        )
+    st.markdown(
+            "### We see 2 opportunities for SB19:"
+        )
+    st.markdown(
+            "#### 1. Increase streams"
+        )
+    st.markdown(
+            "#### 2. Become a mainstay in the charts"
+        )
+
+def tiktok():
+    st.title('What is the TikTok Sound?')
 
 def pitch():
     st.title('How can we use data science to help SB19?')
@@ -123,8 +159,10 @@ def references():
 list_of_pages = [
     "The Project",
     "Who is SB19?",
+    "SB19 and Spotify",
     "Data Sources and Methodology",
     "SB19's Chart Performance",
+    "The TikTok Sound",
     "The Pitch",
     "Genre Classifier and Recommender Engine",
     #"The Playlists",
@@ -132,7 +170,7 @@ list_of_pages = [
     "References"
 ]
 
-st.sidebar.title('Table of Contents')
+st.sidebar.title('P-Pop to the Top!')
 selection = st.sidebar.radio("Go to", list_of_pages)
 
 if selection == "The Project":
@@ -141,11 +179,17 @@ if selection == "The Project":
 elif selection == "Who is SB19?":
     sb19()
 
+elif selection == "SB19 and Spotify":
+    sb19_spotify()
+
 elif selection == "Data Sources and Methodology":
-    data_method()
+    methodology()
 
 elif selection == "SB19's Chart Performance":
     chart_perf()
+
+elif selection == "The TikTok Sound":
+    tiktok()
 
 elif selection == "The Pitch":
     pitch()
