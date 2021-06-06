@@ -19,7 +19,7 @@ def project():
     st.subheader('by Data Science Fellowship Cohort 7 - Group 1')
     st.write('Bym, Ben, Matt, Miggy, Nilly, Robby (mentored by Danilo)')
 
-    intro_image = Image.open('Sprint_2_G1_SB19FTW/Slide1.png')
+    intro_image = Image.open('slides/Slide1.png')
 
     col1, col2 = st.beta_columns(2)
     with col1:
@@ -40,7 +40,7 @@ def sb19():
         )
     col1, col2 = st.beta_columns(2)
     with col1:
-        sb19_pic = Image.open('Sprint_2_G1_SB19FTW/Slide2.png')
+        sb19_pic = Image.open('slides/Slide2.png')
         st.image(sb19_pic)
     with col2:
         st.markdown(
@@ -62,13 +62,13 @@ def sb19_spotify():
 
     col1, col2 = st.beta_columns(2)
     with col1:
-        sb19_follow = Image.open("Sprint_2_G1_SB19FTW/Slide3.png")
+        sb19_follow = Image.open("slides/Slide3.png")
         st.image(sb19_follow)
         st.markdown(
             "SB19 has a **massive following** on social media but **relatively low streams** on Spotify."
         )
     with col2:
-        tiktok_follow = Image.open("Sprint_2_G1_SB19FTW/Slide4.png")
+        tiktok_follow = Image.open("slides/Slide4.png")
         st.image(tiktok_follow)
         st.markdown(
             "These artists have **smaller followings** but **higher streams.**"
@@ -83,7 +83,7 @@ def sb19_spotify():
     
 def methodology():
     st.title('Methodology and Data Sources')
-    methodology = Image.open("Sprint_2_G1_SB19FTW/Slide6.png")
+    methodology = Image.open("slides/Slide6.png")
     st.image(methodology)
 
 def chart_perf():
@@ -212,6 +212,7 @@ def tiktok():
         elif option == "tempo":
             img = Image.open("tiktok_features/tempo.png")
             st.image(img)
+    st.subheader("How does SB19 compare?")
     
 
 
@@ -219,10 +220,10 @@ def pitch():
     st.title('How can we use data science to help SB19?')
     col1, col2 = st.beta_columns(2)
     with col1:
-        alt1 = Image.open("Sprint_2_G1_SB19FTW/Slide12.png")
+        alt1 = Image.open("slides/Slide12.png")
         st.image(alt1)
     with col2:
-        alt2 = Image.open("Sprint_2_G1_SB19FTW/Slide13.png")
+        alt2 = Image.open("slides/Slide13.png")
         st.image(alt2)
 
 def recommender():
