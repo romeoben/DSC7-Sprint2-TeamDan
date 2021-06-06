@@ -8,13 +8,17 @@ import streamlit as st
 import streamlit.components.v1 as components
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics.pairwise import euclidean_distances, manhattan_distances, cosine_similarity
+from sklearn.metrics.pairwise import cosine_similarity
 
 from PIL import Image
 
 st.set_page_config(page_title='P-Pop to the Top!', layout="wide")
 warnings.filterwarnings('ignore')
 st.set_option('deprecation.showPyplotGlobalUse', False)
+
+rec_df = pd.read_csv("data/rec_pool.csv")
+feature_cols = ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness', 'instrumentalness',\
+                'liveness', 'valence', 'tempo']
 
 def project():
     st.title('Catapulting Pinoy Pop to the Top')
@@ -32,7 +36,6 @@ def project():
         st.markdown(
             "# We harnessed the power of data to decode the **TikTok** sound and inspire **SB19’s** new hit track designed to *top the charts*."
         )
-
      
 def sb19():
     st.title('Introducing SB19')
@@ -57,7 +60,6 @@ def sb19():
         st.markdown(
             " - The first Filipino and Southeast Asian act to be nominated in **Billboard Music Awards** for the *Top Social Artist* category"
         )
-
 
 def sb19_spotify():
     st.title('SB19 and Spotify: At A Glance')
@@ -269,7 +271,6 @@ def tiktok():
             "Let's compare SB19’s sound to that of mainstay Tiktok songs. The team defined mainstay songs to be those which charted in top 20 and stayed in charts for at least a year. Mainly, we can see that SB19 songs tends to be **less danceable, generally louder, and more likely to be performed live** than the current TikTok sound."
         )
 
-
 def pitch():
     st.title('How can we use data science to help SB19?')
     col1, col2 = st.beta_columns(2)
@@ -281,7 +282,91 @@ def pitch():
         st.image(alt2)
 
 def recommender():
-    st.title('The Recommender Engine')
+    st.title('The Recommender Engines')
+    st.markdown(
+    '### We developed two recommender engines for each of our proposed alternatives to SB19. Both used a recommender pool of tracks from the Spotify Philippines Top 200 Charts from January 1, 2017 to May 20, 2021.')
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        img = Image.open("img/Slide14.PNG")
+        st.image(img)
+    with col2:
+        st.markdown(
+            "### The first recommender engine uses audio features only to determine the cosine distance between the seed track and the recommender pool tracks."
+        )
+    
+    with st.beta_expander("Try me!"):
+        seed_track = 'Vibe With Me'
+        option = st.selectbox(
+        'Select a Track:',
+        ['Vibe With Me', 'Binibini', 'Marikit', 'Chinita Girl'], key='0002')
+        if option == 'Vibe with Me':
+            seed_track = 'Vibe With Me'
+        elif option == 'Binibini':
+            seed_track = 'Binibini'
+        elif option == 'Marikit':
+            seed_track = 'Marikit'
+        elif option == 'Chinita Girl':
+            seed_track = 'Chinita Girl'
+        #elif option == 'Binibini':
+            #seed_track = 'Binibini'
+            
+        seed_data = rec_df[rec_df['track_name']==seed_track].iloc[0]
+        
+        #compute cosine distances, audio features only
+        rec_df['cosine_dist'] = rec_df.apply(lambda x: 1-cosine_similarity(x[feature_cols].values.reshape(1, -1),seed_data[feature_cols].values.reshape(1, -1)).flatten()[0], axis=1)
+
+        #get top 10 nearest to seed_track_data
+        recommendation_df = rec_df[rec_df['track_id']!=seed_data['track_id']].sort_values('cosine_dist')[:10]
+        recommendation_df[['track_name','artist_name','cosine_dist']+feature_cols]
+            
+            
+        
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        img = Image.open("img/Slide18.PNG")
+        st.image(img)
+
+    with col2:
+        st.markdown(
+            "### The second recommender engine also uses audio features, but then filters the songs based on predicted genre using a Support Vector Machine (SVM) classification model."
+        )
+    
+    with st.beta_expander("Try me!"):
+        seed_track = 'What?'
+        option = st.selectbox('Select a Track:', ['What?', 'Tilaluha', 'Go Up', 'Alab (Burning)', 'Love Goes', 'Love Goes - EDM Version', 'Hanggang Sa Huli'], key='0003')
+        
+        if option == 'What':
+            seed_track = 'What?'
+        elif option == 'Tilaluha':
+            seed_track = 'Tilaluha'
+        elif option == 'Go Up':
+            seed_track = 'Go Up'
+        elif option == 'Alab (Burning)':
+            seed_track = 'Alab (Burning)'
+        elif option == 'Love Goes':
+            seed_track = 'Love Goes'
+        elif option == 'Love Goes - EDM Version':
+            seed_track = 'Love Goes - EDM Version'
+        elif option == 'Hanggang Sa Huli':
+            seed_track = 'Hanggang Sa Huli'
+            
+        seed_data = rec_df[rec_df['track_name']==seed_track].iloc[0]
+        
+        genre_cols = [col for col in rec_df.columns if ('predicted_' in col)&('genre' not in col)]
+        cols = feature_cols + genre_cols
+        rec_df['cosine_dist_mod'] = rec_df.apply(lambda x: 1-cosine_similarity(x[cols].values.reshape(1, -1),seed_data[cols].values.reshape(1, -1)).flatten()[0], axis=1)
+        recommendation_df = rec_df[rec_df['track_id']!=seed_data['track_id']].sort_values('cosine_dist_mod')[:10]
+        recommendation_df[['track_name','artist_name','cosine_dist_mod','predicted_genre', 'predicted_genre_prob', 'predicted_tiktok_prob']]
+
+    
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        st.markdown(
+            "### Between the two models tested, K-Nearest Neighbors (k = 46) produced an accuracy of 70 % while SVM (polynomial kernel, degree = 6) produced a higher accuracy of 75%. Given this, we chose to use SVM as our final model."
+        )
+    with col2:
+        img = Image.open("img/Slide17.PNG")
+        st.image(img)
     
 def playlists():
     st.title('The Playlists')
@@ -298,8 +383,6 @@ def playlists():
         st.markdown(
             "*Vibe With Me* was chosen due"
         )
-        img = Image.open("img/Slide16.PNG")
-        st.image(img)
         
     with col2:
         st.markdown(
@@ -309,12 +392,10 @@ def playlists():
             "Seed Track: *Love Goes - EDM Version by SB19*"
         )
         components.iframe("https://open.spotify.com/embed/track/0LAh3hfeuUekvLm3Nq6MmA", height=80)
-        components.iframe("https://open.spotify.com/embed/playlist/2Ih50y8D9X4ABq6NQZsMCJ", height=380, scrolling=True)
+        components.iframe("https://open.spotify.com/embed/playlist/3n05w5yAEZjZ24cGaakzg1", height=380, scrolling=True)
         st.markdown(
             "*Love Goes - EDM Version* was chosen as the seed track due to its **high TikTok probability (0.5)**, based on our classifier model."
         )
-        img = Image.open("img/Slide20.PNG")
-        st.image(img)
         
 def conclusion():
     st.title('Conclusion and Recommendations')
@@ -347,7 +428,7 @@ list_of_pages = [
     "SB19's Chart Performance",
     "The TikTok Sound",
     "The Pitch",
-    "Genre Classifier and Recommender Engine",
+    "Recommender Engines",
     "The Playlists",
     "Conclusion and Recommendations",
     "References"
@@ -379,7 +460,7 @@ elif selection == "The TikTok Sound":
 elif selection == "The Pitch":
     pitch()
 
-elif selection == "Genre Classifier and Recommender Engine":
+elif selection == "Recommender Engines":
     recommender()
 
 elif selection == "The Playlists":
