@@ -19,7 +19,7 @@ def project():
     st.subheader('by Data Science Fellowship Cohort 7 - Group 1')
     st.write('Bym, Ben, Matt, Miggy, Nilly, Robby (mentored by Danilo)')
 
-    intro_image = Image.open('slides/Slide1.png')
+    intro_image = Image.open('img/Slide1.png')
 
     col1, col2 = st.beta_columns(2)
     with col1:
@@ -40,7 +40,7 @@ def sb19():
         )
     col1, col2 = st.beta_columns(2)
     with col1:
-        sb19_pic = Image.open('slides/Slide2.png')
+        sb19_pic = Image.open('img/Slide2.png')
         st.image(sb19_pic)
     with col2:
         st.markdown(
@@ -62,13 +62,13 @@ def sb19_spotify():
 
     col1, col2 = st.beta_columns(2)
     with col1:
-        sb19_follow = Image.open("slides/Slide3.png")
+        sb19_follow = Image.open("img/Slide3.png")
         st.image(sb19_follow)
         st.markdown(
             "SB19 has a **massive following** on social media but **relatively low streams** on Spotify."
         )
     with col2:
-        tiktok_follow = Image.open("slides/Slide4.png")
+        tiktok_follow = Image.open("img/Slide4.png")
         st.image(tiktok_follow)
         st.markdown(
             "These artists have **smaller followings** but **higher streams.**"
@@ -83,7 +83,7 @@ def sb19_spotify():
     
 def methodology():
     st.title('Methodology and Data Sources')
-    methodology = Image.open("slides/Slide6.png")
+    methodology = Image.open("img/Slide6.png")
     st.image(methodology)
 
 def chart_perf():
@@ -212,18 +212,73 @@ def tiktok():
         elif option == "tempo":
             img = Image.open("tiktok_features/tempo.png")
             st.image(img)
-    st.subheader("How does SB19 compare?")
     
+    st.subheader("So how does SB19 compare?")
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.markdown(
+            "We looked into the audio features of global vs. local vs. TikTok songs charting in the Top 200. We found that TikTok follows a similar formula when it comes to their songs: **loud, fast-paced, and danceable songs with minimal lyrics.**"
+        )
+        st.markdown(
+            "From here, we can say that TikTok has created **its own signature sound.**"
+        )
+    with col2:    
+        option = st.selectbox('Select an audio feature:',
+            ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo'])
+            
+        if option == "danceability":
+            img = Image.open("tiktok_features/dance.png")
+            st.image(img)
+            
+        elif option == "energy":
+            img = Image.open("tiktok_features/energy.png")
+            st.image(img)
+
+        elif option == "loudness":
+            img = Image.open("tiktok_features/loud.png")
+            st.image(img)
+            
+        elif option == "speechiness":
+            img = Image.open("tiktok_features/speech.png")
+            st.image(img)
+            
+        elif option == "acousticness":
+            img = Image.open("tiktok_features/acoustic.png")
+            st.image(img)
+            
+        elif option == "instrumentalness":
+            img = Image.open("tiktok_features/instrum.png")
+            st.image(img)
+            
+        elif option == "liveness":
+            img = Image.open("tiktok_features/live.png")
+            st.image(img)
+            
+        elif option == "valence":
+            img = Image.open("tiktok_features/val.png")
+            st.image(img)
+            
+        elif option == "tempo":
+            img = Image.open("tiktok_features/tempo.png")
+            st.image(img)
 
 
 def pitch():
     st.title('How can we use data science to help SB19?')
     col1, col2 = st.beta_columns(2)
     with col1:
-        alt1 = Image.open("slides/Slide12.png")
+        alt1 = Image.open("img/Slide12.png")
         st.image(alt1)
     with col2:
-        alt2 = Image.open("slides/Slide13.png")
+        alt2 = Image.open("img/Slide13.png")
         st.image(alt2)
 
 def recommender():
