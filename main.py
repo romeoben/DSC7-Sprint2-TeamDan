@@ -1,9 +1,11 @@
 import warnings
+import pickle
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import streamlit as st
+import streamlit.components.v1 as components
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics.pairwise import euclidean_distances, manhattan_distances, cosine_similarity
@@ -281,29 +283,59 @@ def pitch():
 def recommender():
     st.title('The Recommender Engine')
     
+def playlists():
+    st.title('The Playlists')
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        st.markdown(
+            "### Playlist 1: SB19’s New Sound"
+        )
+        st.markdown(
+            "Seed Track: *Vibe With Me by Matthiaos*"
+        )
+        components.iframe("https://open.spotify.com/embed/track/0G5qmu4TsdUH19zdcbI9Ui", height=80)
+        components.iframe("https://open.spotify.com/embed/playlist/46AnEzYNyAJGwCHQRG5IT8", height=380, scrolling=True)
+        st.markdown(
+            "*Vibe With Me* was chosen due"
+        )
+        img = Image.open("img/Slide16.PNG")
+        st.image(img)
+        
+    with col2:
+        st.markdown(
+            "### Playlist 2: SB19’s Signature TikTok Sound"
+        )
+        st.markdown(
+            "Seed Track: *Love Goes - EDM Version by SB19*"
+        )
+        components.iframe("https://open.spotify.com/embed/track/0LAh3hfeuUekvLm3Nq6MmA", height=80)
+        components.iframe("https://open.spotify.com/embed/playlist/2Ih50y8D9X4ABq6NQZsMCJ", height=380, scrolling=True)
+        st.markdown(
+            "*Love Goes - EDM Version* was chosen as the seed track due to its **high TikTok probability (0.5)**, based on our classifier model."
+        )
+        img = Image.open("img/Slide20.PNG")
+        st.image(img)
+        
 def conclusion():
-    st.title('How to we take P-Pop to the top?')
+    st.title('Conclusion and Recommendations')
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        st.subheader('So, how do we take P-Pop to the top?')
+        img = Image.open("img/Slide21.PNG")
+        st.image(img)
+            
+    with col2:
+        st.subheader('We\'re off to a great start, but what can we do better?')
+        img = Image.open("img/Slide22.PNG")
+        st.image(img)
 
 def references():
     st.title('References')
     
-    st.subheader('[1] Building Better Learning Environments in the Philippines')
-    st.write("World Bank Group. (2016). Building Better Learning Environments in the Philippines. Philippines education note,no. 4;. World Bank, Washington, DC. © World Bank. https://openknowledge.worldbank.org/handle/10986/24744 License: CC BY 3.0 IGO.")
-    
-    st.subheader("[2] House Bill No. 473: An Act Regulating Class Size in All Public Schools and Appointing Funds Therefor")
-    st.write("Tinio, A. L., & Castro, F. L. (2016, June 30). House Bill No. 473: An Act Regulating Class Size in All Public Schools and Appointing Funds Therefor. House Bill No. 473. https://www.congress.gov.ph/legisdocs/basic_17/HB00473.pdf.")
-    
-    st.subheader("[3] Class-size affects students' learning : DepEd. Philippine News Agency RSS")
-    st.write("Montemayor, M. T. (2018, March 19). Class-size affects students' learning : DepEd. Philippine News Agency RSS. https://www.pna.gov.ph/articles/1029281. ")
+    st.markdown('#### 1. TikTok. (2019, August 16). *This year on TikTok: Celebrating the community and videos that brought Filipinos together in 2020.* Newsroom. https://newsroom.tiktok.com/fil-ph/tiktok-top-100-list-for-the-philippines. ')
+    st.markdown('#### 2. GMA News Online. (2020, November 23). *5 Pinoy hip-hop artists to listen to, according to Matthaios.* GMA News Online. https://www.gmanetwork.com/news/lifestyle/hobbiesandactivities/765254/matthaios-recommends-listening-to-these-5-pinoy-hip-hop-artists/story/. ')
+    st.markdown('#### 3. ABS-CBN News, &amp; Salterio, L. C. (2020, July 18). *How \'Marikit\' became a massive hit for newcomer Juan Caoile.* ABS. https://news.abs-cbn.com/entertainment/07/18/20/how-marikit-became-a-massive-hit-for-newcomer-juan-caoile. ')
 
-    st.subheader('[4] Enhanced Basic Education Information System (EBEIS) (2015)')
-    st.write("")    
-
-    st.subheader('[5] Comparing the DISADVANTAGE INDEX (DI) with GEOGRAPHICALLY ISOLATED AND DISADVANTAGED AREAS (GIDA)')
-    st.write("Comparing the DISADVANTAGE INDEX (DI) with GEOGRAPHICALLY ISOLATED AND DISADVANTAGED AREAS (GIDA). DepEd, 2015.")      
-    
-    st.subheader('[6] Computation of Public Schools MOOE')
-    st.write("Llego, M. A. (2015). Computation of Public Schools MOOE. https://www.teacherph.com/computation-public-schools-mooe/")  
     
     
     
@@ -316,14 +348,14 @@ list_of_pages = [
     "The TikTok Sound",
     "The Pitch",
     "Genre Classifier and Recommender Engine",
-    #"The Playlists",
-    "Conclusion",
+    "The Playlists",
+    "Conclusion and Recommendations",
     "References"
 ]
 
-#sb19_logo = Image.open('img/SB19_OfficialLogo.jpg')
-#st.sidebar.image(sb19_logo, caption='', use_column_width=True)
 st.sidebar.title('P-Pop to the Top!')
+sb19_logo = Image.open('img/SB19_OfficialLogo.jpg')
+st.sidebar.image(sb19_logo, caption='', width = 200)
 selection = st.sidebar.radio("Go to", list_of_pages)
 
 if selection == "The Project":
@@ -349,6 +381,9 @@ elif selection == "The Pitch":
 
 elif selection == "Genre Classifier and Recommender Engine":
     recommender()
+
+elif selection == "The Playlists":
+    playlists()
 
 elif selection == "Conclusion and Recommendations":
     conclusion()
