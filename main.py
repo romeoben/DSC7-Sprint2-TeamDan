@@ -157,9 +157,63 @@ def tiktok():
     st.markdown(
             "*Binibini*, *Chinita Girls*, and *Marikit* were all released in the first quarter of 2020 and maintained high Spotify chart positions for most of that year. **What are these TikTok artists and their songs doing right?**"
         )
-    st.markdown(
-            "### We see 2 opportunities for SB19:"
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.markdown(
+            "We looked into the audio features of global vs. local vs. TikTok songs charting in the Top 200. We found that TikTok follows a similar formula when it comes to their songs: **loud, fast-paced, and danceable songs with minimal lyrics.**"
         )
+        st.markdown(
+            "From here, we can say that TikTok has created **its own signature sound.**"
+        )
+    with col2:    
+        option = st.selectbox('Select an audio feature:',
+            ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo'])
+            
+        if option == "danceability":
+            img = Image.open("tiktok_features/dance.png")
+            st.image(img)
+            
+        elif option == "energy":
+            img = Image.open("tiktok_features/energy.png")
+            st.image(img)
+
+        elif option == "loudness":
+            img = Image.open("tiktok_features/loud.png")
+            st.image(img)
+            
+        elif option == "speechiness":
+            img = Image.open("tiktok_features/speech.png")
+            st.image(img)
+            
+        elif option == "acousticness":
+            img = Image.open("tiktok_features/acoustic.png")
+            st.image(img)
+            
+        elif option == "instrumentalness":
+            img = Image.open("tiktok_features/instrum.png")
+            st.image(img)
+            
+        elif option == "liveness":
+            img = Image.open("tiktok_features/live.png")
+            st.image(img)
+            
+        elif option == "valence":
+            img = Image.open("tiktok_features/val.png")
+            st.image(img)
+            
+        elif option == "tempo":
+            img = Image.open("tiktok_features/tempo.png")
+            st.image(img)
+    
+
 
 def pitch():
     st.title('How can we use data science to help SB19?')
@@ -170,12 +224,10 @@ def pitch():
     with col2:
         alt2 = Image.open("Sprint_2_G1_SB19FTW/Slide13.png")
         st.image(alt2)
-    
 
 def recommender():
     st.title('The Recommender Engine')
     
-
 def conclusion():
     st.title('How to we take P-Pop to the top?')
 
