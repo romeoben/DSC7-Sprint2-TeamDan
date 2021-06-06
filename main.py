@@ -19,14 +19,16 @@ def project():
     st.subheader('by Data Science Fellowship Cohort 7 - Group 1')
     st.write('Bym, Ben, Matt, Miggy, Nilly, Robby (mentored by Danilo)')
 
-    intro_image = Image.open('./Sprint_2_G1_SB19FTW/Slide1.png')
+    intro_image = Image.open('Sprint_2_G1_SB19FTW/Slide1.png')
 
     col1, col2 = st.beta_columns(2)
     with col1:
         st.image(intro_image)
     with col2:
+        st.write("")
+        st.write("")
         st.markdown(
-            "We harnessed the power of data to decode the **TikTok** sound and inspire **SB19’s** new hit track designed to *top the charts*."
+            "# We harnessed the power of data to decode the **TikTok** sound and inspire **SB19’s** new hit track designed to *top the charts*."
         )
 
      
@@ -38,7 +40,7 @@ def sb19():
         )
     col1, col2 = st.beta_columns(2)
     with col1:
-        sb19_pic = Image.open('./Sprint_2_G1_SB19FTW/Slide2.png')
+        sb19_pic = Image.open('Sprint_2_G1_SB19FTW/Slide2.png')
         st.image(sb19_pic)
     with col2:
         st.markdown(
@@ -53,21 +55,6 @@ def sb19():
         st.markdown(
             " - The first Filipino and Southeast Asian act to be nominated in **Billboard Music Awards** for the *Top Social Artist* category"
         )
-    st.subheader(
-            "On Social Media:"
-        )
-    col1, col2, col3 = st.beta_columns(3)
-    with col1:
-        st.subheader('**Facebook**')
-        st.write("**1.4M Followers**")
-
-    with col2:
-        st.subheader('**Twitter**')
-        st.write("**422k Followers**")
-
-    with col3:
-        st.subheader('**Instagram**')
-        st.write("**454K Followers**")
 
 
 def sb19_spotify():
@@ -75,13 +62,13 @@ def sb19_spotify():
 
     col1, col2 = st.beta_columns(2)
     with col1:
-        sb19_follow = Image.open("./Sprint_2_G1_SB19FTW/Slide3.png")
+        sb19_follow = Image.open("Sprint_2_G1_SB19FTW/Slide3.png")
         st.image(sb19_follow)
         st.markdown(
             "SB19 has a **massive following** on social media but **relatively low streams** on Spotify."
         )
     with col2:
-        tiktok_follow = Image.open("./Sprint_2_G1_SB19FTW/Slide4.png")
+        tiktok_follow = Image.open("Sprint_2_G1_SB19FTW/Slide4.png")
         st.image(tiktok_follow)
         st.markdown(
             "These artists have **smaller followings** but **higher streams.**"
@@ -94,7 +81,6 @@ def sb19_spotify():
             
             st.markdown("""<a style='display: block; text-align: center;'>**These three are top artists on PH TikTok.**</a>""",unsafe_allow_html=True,)
     
-
 def methodology():
     st.title('Methodology and Data Sources')
     methodology = Image.open("Sprint_2_G1_SB19FTW/Slide6.png")
@@ -121,9 +107,69 @@ def chart_perf():
 
 def tiktok():
     st.title('What is the TikTok Sound?')
+    st.subheader("TikTok Artists Chart Performance")
+    tiktok_charts = Image.open("img/tiktok_chartpos.png")
+    st.image(tiktok_charts)
+    st.write("")
+    col1, col2, col3, col4, col5, col6 = st.beta_columns(6)
+    with col1:
+        img = Image.open("img/matthaios.jpg")
+        st.image(img)
+    with col2:
+        st.write("")
+        st.markdown(
+            "### MATTHAIOS"
+        )
+        st.markdown(
+            "#### Binibini"
+        )
+        st.markdown(
+            "#### 24M Streams"
+        )
+    with col3:
+        img = Image.open("img/juancaoile.jfif")
+        st.image(img, use_column_width=True)
+    with col4:
+        st.write("")
+        st.markdown(
+            "### JUAN CAOILE"
+        )
+        st.markdown(
+            "#### Marikit"
+        )
+        st.markdown(
+            "#### 43M Streams"
+        )
+    with col5:
+        img = Image.open("img/lilvinceyy.jpg")
+        st.image(img)
+    with col6:
+        st.write("")
+        st.markdown(
+            "### LIL VINCEYY"
+        )
+        st.markdown(
+            "#### Chinita Girl"
+        )
+        st.markdown(
+            "#### 25M Streams"
+        )
+    st.markdown(
+            "*Binibini*, *Chinita Girls*, and *Marikit* were all released in the first quarter of 2020 and maintained high Spotify chart positions for most of that year. **What are these TikTok artists and their songs doing right?**"
+        )
+    st.markdown(
+            "### We see 2 opportunities for SB19:"
+        )
 
 def pitch():
     st.title('How can we use data science to help SB19?')
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        alt1 = Image.open("Sprint_2_G1_SB19FTW/Slide12.png")
+        st.image(alt1)
+    with col2:
+        alt2 = Image.open("Sprint_2_G1_SB19FTW/Slide13.png")
+        st.image(alt2)
     
 
 def recommender():
@@ -170,6 +216,8 @@ list_of_pages = [
     "References"
 ]
 
+#sb19_logo = Image.open('img/SB19_OfficialLogo.jpg')
+#st.sidebar.image(sb19_logo, caption='', use_column_width=True)
 st.sidebar.title('P-Pop to the Top!')
 selection = st.sidebar.radio("Go to", list_of_pages)
 
