@@ -19,7 +19,7 @@ def project():
     st.subheader('by Data Science Fellowship Cohort 7 - Group 1')
     st.write('Bym, Ben, Matt, Miggy, Nilly, Robby (mentored by Danilo)')
 
-    intro_image = Image.open('img/Slide1.png')
+    intro_image = Image.open('img/Slide1.PNG')
 
     col1, col2 = st.beta_columns(2)
     with col1:
@@ -40,7 +40,7 @@ def sb19():
         )
     col1, col2 = st.beta_columns(2)
     with col1:
-        sb19_pic = Image.open('img/Slide2.png')
+        sb19_pic = Image.open('img/Slide2.PNG')
         st.image(sb19_pic)
     with col2:
         st.markdown(
@@ -62,13 +62,13 @@ def sb19_spotify():
 
     col1, col2 = st.beta_columns(2)
     with col1:
-        sb19_follow = Image.open("img/Slide3.png")
+        sb19_follow = Image.open("img/Slide3.PNG")
         st.image(sb19_follow)
         st.markdown(
             "SB19 has a **massive following** on social media but **relatively low streams** on Spotify."
         )
     with col2:
-        tiktok_follow = Image.open("img/Slide4.png")
+        tiktok_follow = Image.open("img/Slide4.PNG")
         st.image(tiktok_follow)
         st.markdown(
             "These artists have **smaller followings** but **higher streams.**"
@@ -83,7 +83,7 @@ def sb19_spotify():
     
 def methodology():
     st.title('Methodology and Data Sources')
-    methodology = Image.open("img/Slide6.png")
+    methodology = Image.open("img/Slide6.PNG")
     st.image(methodology)
 
 def chart_perf():
@@ -175,7 +175,7 @@ def tiktok():
         )
     with col2:    
         option = st.selectbox('Select an audio feature:',
-            ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo'])
+            ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo'], key = "0000")
             
         if option == "danceability":
             img = Image.open("tiktok_features/dance.png")
@@ -216,69 +216,66 @@ def tiktok():
     st.subheader("So how does SB19 compare?")
     col1, col2 = st.beta_columns(2)
     with col1:
-        st.write("")
-        st.write("")
-        st.write("")
-        st.write("")
-        st.write("")
-        st.write("")
-        st.write("")
-        st.write("")
-        st.markdown(
-            "We looked into the audio features of global vs. local vs. TikTok songs charting in the Top 200. We found that TikTok follows a similar formula when it comes to their songs: **loud, fast-paced, and danceable songs with minimal lyrics.**"
-        )
-        st.markdown(
-            "From here, we can say that TikTok has created **its own signature sound.**"
-        )
-    with col2:    
-        option = st.selectbox('Select an audio feature:',
-            ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo'])
+        option1 = st.selectbox('Select an audio feature:',
+            ['danceability', 'energy', 'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo'], key = "0001")
             
-        if option == "danceability":
-            img = Image.open("tiktok_features/dance.png")
+        if option1 == "danceability":
+            img = Image.open("sb19_v_tiktok/dance.png")
             st.image(img)
             
-        elif option == "energy":
-            img = Image.open("tiktok_features/energy.png")
+        elif option1 == "energy":
+            img = Image.open("sb19_v_tiktok/energy.png")
             st.image(img)
 
-        elif option == "loudness":
-            img = Image.open("tiktok_features/loud.png")
+        elif option1 == "loudness":
+            img = Image.open("sb19_v_tiktok/loud.png")
             st.image(img)
             
-        elif option == "speechiness":
-            img = Image.open("tiktok_features/speech.png")
+        elif option1 == "speechiness":
+            img = Image.open("sb19_v_tiktok/speech.png")
             st.image(img)
             
-        elif option == "acousticness":
-            img = Image.open("tiktok_features/acoustic.png")
+        elif option1 == "acousticness":
+            img = Image.open("sb19_v_tiktok/acoustic.png")
             st.image(img)
             
-        elif option == "instrumentalness":
-            img = Image.open("tiktok_features/instrum.png")
+        elif option1 == "instrumentalness":
+            img = Image.open("sb19_v_tiktok/instrum.png")
             st.image(img)
             
-        elif option == "liveness":
-            img = Image.open("tiktok_features/live.png")
+        elif option1 == "liveness":
+            img = Image.open("sb19_v_tiktok/live.png")
             st.image(img)
             
-        elif option == "valence":
-            img = Image.open("tiktok_features/val.png")
+        elif option1 == "valence":
+            img = Image.open("sb19_v_tiktok/val.png")
             st.image(img)
             
-        elif option == "tempo":
-            img = Image.open("tiktok_features/tempo.png")
+        elif option1 == "tempo":
+            img = Image.open("sb19_v_tiktok/tempo.png")
             st.image(img)
+    with col2:
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.markdown(
+            "Let's compare SB19’s sound to that of mainstay Tiktok songs. The team defined mainstay songs to be those which charted in top 20 and stayed in charts for at least a year. Mainly, we can see that SB19 songs tends to be **less danceable, generally louder, and more likely to be performed live** than the current TikTok sound."
+        )
 
 
 def pitch():
     st.title('How can we use data science to help SB19?')
     col1, col2 = st.beta_columns(2)
     with col1:
-        alt1 = Image.open("img/Slide12.png")
+        alt1 = Image.open("img/Slide12.PNG")
         st.image(alt1)
     with col2:
-        alt2 = Image.open("img/Slide13.png")
+        alt2 = Image.open("img/Slide13.PNG")
         st.image(alt2)
 
 def recommender():
